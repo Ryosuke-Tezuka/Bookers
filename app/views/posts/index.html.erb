@@ -1,22 +1,28 @@
 <h1>Books</h1>
 
-<% @posts.each do |post| %>
-	<%= post.title %>
-	<%= post.body %>
-	<%= link_to "Show", post_path(post.id), class:"show_#{post.id}" %>
-	<%= link_to "Edit", edit_post_path(post.id), class:"edit_#{post.id}" %>
-	<%= link_to "Destroy", destroy_post_path(post.id), class:"destroy_#{post.id}", method: :delete, "data-confirm" => "Are you sure?" %>
-<% end %>
+<table>
+	<tr>
+		<th>Title</th><th>Body</th><th colspan="3"></th>
+	</tr>
+		<% @posts.each do |post| %>
+	<tr>
+		<td><%= post.title %></td>
+		<td><%= post.body %></td>
+		<td><%= link_to "Show", post_path(post.id), class:"show_#{post.id}" %></td>
+		<td><%= link_to "Edit", edit_post_path(post.id), class:"edit_#{post.id}" %></td>
+		<td><%= link_to "Destroy", destroy_post_path(post.id), class:"destroy_#{post.id}", method: :delete, "data-confirm" => "Are you sure?" %></td>
+	</tr>
+		<% end %>
+</table>
 
 <h2>New book</h2>
 
 <%= form_for @post, url: posts_create_path do |f| %>
 
-	<h4> Title</h4>
-	<%= f.text_field :title, class:"book_title" %>
+	<label for="post_title"> Title</label>
+	<span><%= f.text_field :title, class:"book_title" %></span>
 
-	<h4> Body</h4>
-	<%= f.text_area :body, class:"book_body" %>
-	<br>
-	<%= f.submit 'Create Book' %>
+	<label for="post_body"> Body</label>
+	<span><%= f.text_area :body, class:"book_body" %></span>
+	<span><%= f.submit 'Create Book' %></span>
 <% end %>

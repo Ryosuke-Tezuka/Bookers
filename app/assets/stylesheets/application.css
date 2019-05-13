@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+body{
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	margin: 33px;
+}
+
+a{
+	color: #666;
+}
+
+#notice{
+	color: #008000;
+}
